@@ -29,3 +29,6 @@ Configure your database details in database.yml file.
 2. Need More Test cases.
 3. Google Calendar API Integration
 4. Better CSS.
+
+##### Known Issues?
+1. The UI breaks when throwing an error for past date set as deadline for the task.

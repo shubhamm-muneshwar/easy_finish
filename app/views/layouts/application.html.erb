@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Easy Finish</title>
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <!-- TODO add these as assets -->
+      <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+      <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+      <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+      <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+   </head>
+   <body>
+      <div class="placeholder">
+         <nav class="navbar navbar-light bg-light">
+           <div class="col-md-12">
+             <div class="pull-left">
+              <a class="navbar-brand" href="/">Easy Finish</a>
+            </div>
+            <div class="pull-right">
+              <p class="navbar-text">
+                 <% if user_signed_in? %>
+                 Logged in as <strong><%= current_user.email %></strong>.
+                 <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+                 <% else %>
+                 <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+                 <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+                 <% end %>
+              </p>
+            </div>
+          </div>
+         </nav>
+         <div class="row">
+            <% if user_signed_in? %>
+            <div class="col-sm-2 col-md-2 sidebar">
+               <div class="mini-submenu">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+               </div>
+               <div class="list-group">
+                 <a href="/tasks" class="list-group-item">
+                   <i class="fa fa-calendar"></i> All Reminders
+                 </a>
+                  <a href="/tasks?show=backlog" class="list-group-item">
+                    <i class="fa fa-minus-circle"></i> Backlog
+                  </a>
+                  <a href="/tasks?show=inprogress" class="list-group-item">
+                    <i class="fa fa-chevron-circle-right"></i> In Progrss
+                  </a>
+                  <a href="/tasks?show=new" class="list-group-item">
+                    <i class="fa fa-check-circle"></i> Completed
+                  </a>
+               </div>
+            </div>
+            <% end %>
+            <div class="col-sm-8 col-md-9">
+              <% if notice %>
+                <p class="alert alert-success"><%= notice %></p>
+              <% end %>
+              <% if alert %>
+               <p class="alert alert-danger"><%= alert %></p>
+              <% end %>
+               <!--Body content-->
+              <%= yield %>
+            </div>
+         </div>
+      </div>
+
+   </body>
+</html>

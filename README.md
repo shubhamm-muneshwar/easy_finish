@@ -1,25 +1,31 @@
-# README
+# Easy Finish
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Easy finish is a simple task management tool that allows you to create tasks and send reminders to you for these tasks.
 
-Things you may want to cover:
+### Tech Stack
 
-* Ruby version
+Ruby - 2.5.1
+Rails 6.1.3.2
+PostgreSQL
 
-* System dependencies
+##### Configuration
+  ```
+  SMTP_DEFAULT_FROM=example@gmail.com
+  SMTP_USER_EMAIL=example@gmail.com
+  SMTP_EMAIL_PASSWORD=xxxxxxxxxx
+```
 
-* Configuration
+Configure your database details in database.yml file.
 
-* Database creation
+##### What's incorporated?
 
-* Database initialization
+1. Device Authentication
+2. Crud operations for Tasks
+3. Reminder 1 hour before and 24 hours before the task deadline. (No reminder if the deadline is prior to 1 hour)
+4. Ability to add task deadline to Google Calendar. (Not to be mistaken with Google Calendar API Integration)
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# easy_finish
+##### What can be improved?
+1. Very basic user interface. Can be turned into responsive UI.
+2. Need More Test cases.
+3. Google Calendar API Integration
+4. Better CSS.
